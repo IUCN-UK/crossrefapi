@@ -26,7 +26,7 @@ client = Crossrefapi::Client.new
 ```
 
 ### Works
-#### Fetching Works Metadata by DOI
+#### Return metadata for the specified Crossref DOI
 
 ```ruby
 doi = '10.2305/IUCN.UK.2016-1.RLTS.T56003281A22157381.en'
@@ -34,7 +34,7 @@ doi_info = client.works.by_doi(doi)
 puts doi_info
 ```
 
-#### Fetching the Agency for a Specific DOI
+#### Return the agency associated with a specific work by its DOI
 
 ```ruby
 doi = '10.2305/IUCN.UK.2016-1.RLTS.T56003281A22157381.en'

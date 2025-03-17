@@ -22,7 +22,7 @@ module Crossrefapi
       end
     end
 
-    private    
+    private
 
     def build_uri(endpoint)
       url = "#{API_BASE}#{endpoint}"

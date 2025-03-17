@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Crossrefapi
   class Works
     def initialize(client)

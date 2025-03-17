@@ -18,14 +18,15 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-#### Initializing a Client
+### Initializing a Client
 To start interacting with the CrossRef API, first, initialize a `Client` instance:
 
 ```ruby
 client = Crossrefapi::Client.new
 ```
 
-#### Fetching Work Metadata by DOI
+### Works
+#### Fetching Works Metadata by DOI
 
 ```ruby
 doi = '10.2305/IUCN.UK.2016-1.RLTS.T56003281A22157381.en'
@@ -34,6 +35,24 @@ puts doi_info
 ```
 
 #### Fetching the Agency for a Specific DOI
+
+```ruby
+doi = '10.2305/IUCN.UK.2016-1.RLTS.T56003281A22157381.en'
+agency_info = client.works.by_doi_agency(doi)
+puts agency_info
+```
+
+### Prefixes
+#### Return a list of works associated with specified {prefix}.
+
+```ruby
+prefix = '10.2305'
+query = { 'query.container-title' => 'IUCN Red List of Threatened Species', 'offset' => '9980' }
+prefix_info = client.prefixes.by_prefix_works(doi, query)
+puts prefix_info
+```
+
+#### Returns metadata for the DOI owner prefix
 
 ```ruby
 doi = '10.2305/IUCN.UK.2016-1.RLTS.T56003281A22157381.en'

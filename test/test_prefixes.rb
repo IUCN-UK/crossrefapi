@@ -23,17 +23,17 @@ module Crossrefapi
       assert_equal JSON.parse(response_body), response
     end
 
-    # def test_by_prefix_works
-    #   endpoint = "prefixes/10.2305/works"
-    #   response_body = { "status" => "ok" }.to_json
+    def test_by_prefix_works
+      endpoint = "prefixes/10.2305/works"
+      response_body = { "status" => "ok" }.to_json
 
-    #   stub_request(:get, "https://api.crossref.org/#{endpoint}")
-    #     .to_return(status: 200, body: response_body)
+      stub_request(:get, "https://api.crossref.org/#{endpoint}?offset=9980&query.container-title=IUCN%20Red%20List%20of%20Threatened%20Species")
+        .to_return(status: 200, body: response_body)
 
-    #   query = { "query.container-title" => "IUCN Red List of Threatened Species", "offset" => "9980" }
+      query = { "query.container-title" => "IUCN Red List of Threatened Species", "offset" => "9980" }
 
-    #   response = @client.works.by_prefix_works("10.2305", query)
-    #   assert_equal JSON.parse(response_body), response
-    # end
+      response = @client.prefixes.by_prefix_works("10.2305", query)
+      assert_equal JSON.parse(response_body), response
+    end
   end
 end

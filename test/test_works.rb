@@ -19,7 +19,7 @@ module Crossrefapi
       stub_request(:get, "https://api.crossref.org/#{endpoint}")
         .to_return(status: 200, body: response_body)
 
-      response = @client.works.all({'query' => 'red+list'})
+      response = @client.works.all({ "query" => "red+list" })
       assert_equal JSON.parse(response_body), response
     end
 

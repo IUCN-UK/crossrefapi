@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Crossrefapi
-  # This class serves as the main entry point for interacting with the CrossRef API licences endpoints.
+  # This class serves as the main entry point for interacting with the CrossRef API funders endpoints.
   #
   # For detailed API documentation, visit:
   # https://api.crossref.org/swagger-ui/index.html#/Funders

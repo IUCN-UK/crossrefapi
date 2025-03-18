@@ -17,6 +17,10 @@ module Crossrefapi
       @client = client
     end
 
+    def all(query)
+      @client.get("works", query)
+    end
+
     def by_doi(doi)
       @client.get("works/#{doi}")
     end

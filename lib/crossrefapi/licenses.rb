@@ -10,7 +10,7 @@ module Crossrefapi
   #
   #   client = Crossrefapi::Client.new
   #   query = { "query": "red+list" }
-  #   response = client.licences.all(query)
+  #   response = client.licenses.all(query)
   #   pp response
   #
   class Licenses

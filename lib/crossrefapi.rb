@@ -5,9 +5,10 @@ require "json"
 
 require_relative "crossrefapi/version"
 require_relative "crossrefapi/client"
-require_relative "crossrefapi/works"
-require_relative "crossrefapi/prefixes"
+require_relative "crossrefapi/funders"
 require_relative "crossrefapi/licenses"
+require_relative "crossrefapi/prefixes"
+require_relative "crossrefapi/works"
 
 module Crossrefapi
   class Error < StandardError; end

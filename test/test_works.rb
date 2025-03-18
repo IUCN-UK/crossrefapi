@@ -12,7 +12,7 @@ module Crossrefapi
     end
 
     def test_all
-      endpoint = "works?query=red+list"
+      endpoint = "works?query=red%2Blist"
 
       response_body = { "status" => "ok" }.to_json
 

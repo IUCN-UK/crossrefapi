@@ -14,13 +14,13 @@ module Crossrefapi
     def test_all
       endpoint = "licenses?query=red%2Blist"
 
-      response_body = { "status" => "ok" }.to_json
+      response_body = { "status" => "ok" }
 
       stub_request(:get, "https://api.crossref.org/#{endpoint}")
-        .to_return(status: 200, body: response_body)
+        .to_return(status: 200, body: response_body.to_json, headers: { "Content-Type" => "application/json" })
 
       response = @client.licenses.all({ "query" => "red+list" })
-      assert_equal JSON.parse(response_body), response
+      assert_equal response_body, response
     end
   end
 end

@@ -12,39 +12,39 @@ module Crossrefapi
     end
 
     def test_all
-      endpoint = "works?query=red%2Blist"
+      endpoint = "/works?query=red%2Blist"
+      response_body = { "status" => "ok" }
 
-      response_body = { "status" => "ok" }.to_json
+      stub_request(:get, "https://api.crossref.org#{endpoint}")
+        .to_return(status: 200, body: response_body.to_json, headers: { "Content-Type" => "application/json" })
 
-      stub_request(:get, "https://api.crossref.org/#{endpoint}")
-        .to_return(status: 200, body: response_body)
+      response = @client.get(endpoint)
 
-      response = @client.works.all({ "query" => "red+list" })
-      assert_equal JSON.parse(response_body), response
+      assert_equal response_body, response
     end
 
     def test_by_doi
-      endpoint = "works/10.2305/IUCN.UK.2016-1.RLTS.T56003281A22157381.en"
+      endpoint = "/works/10.2305/IUCN.UK.2016-1.RLTS.T56003281A22157381.en"
 
-      response_body = { "status" => "ok" }.to_json
+      response_body = { "status" => "ok" }
 
-      stub_request(:get, "https://api.crossref.org/#{endpoint}")
-        .to_return(status: 200, body: response_body)
+      stub_request(:get, "https://api.crossref.org#{endpoint}")
+        .to_return(status: 200, body: response_body.to_json, headers: { "Content-Type" => "application/json" })
 
       response = @client.works.by_doi("10.2305/IUCN.UK.2016-1.RLTS.T56003281A22157381.en")
-      assert_equal JSON.parse(response_body), response
+      assert_equal response_body, response
     end
 
     def test_by_doi_agency
-      endpoint = "works/10.2305/IUCN.UK.2016-1.RLTS.T56003281A22157381.en/agency"
+      endpoint = "/works/10.2305/IUCN.UK.2016-1.RLTS.T56003281A22157381.en/agency"
 
-      response_body = { "status" => "ok" }.to_json
+      response_body = { "status" => "ok" }
 
-      stub_request(:get, "https://api.crossref.org/#{endpoint}")
-        .to_return(status: 200, body: response_body)
+      stub_request(:get, "https://api.crossref.org#{endpoint}")
+        .to_return(status: 200, body: response_body.to_json, headers: { "Content-Type" => "application/json" })
 
       response = @client.works.by_doi_agency("10.2305/IUCN.UK.2016-1.RLTS.T56003281A22157381.en")
-      assert_equal JSON.parse(response_body), response
+      assert_equal response_body, response
     end
   end
 end

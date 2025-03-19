@@ -12,3 +12,5 @@ gem "minitest", "~> 5.16"
 gem "webmock"
 
 gem "rubocop", "~> 1.21"
+
+gem "faraday"

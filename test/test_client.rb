@@ -16,17 +16,21 @@ module Crossrefapi
     end
 
     def test_get_success
-      endpoint = "works/10.2305/IUCN.UK.2016-1.RLTS.T56003281A22157381.en"
-
-      response_body = { "status" => "ok" }.to_json
-
-      stub_request(:get, "https://api.crossref.org/#{endpoint}")
-        .to_return(status: 200, body: response_body)
-
+      endpoint = "/works/10.2305/IUCN.UK.2016-1.RLTS.T56003281A22157381.en"
+      response_body = { "status" => "ok" }
+  
+      stub_request(:get, "https://api.crossref.org#{endpoint}")
+        .to_return(
+          status: 200, 
+          body: response_body.to_json, 
+          headers: { 'Content-Type' => 'application/json' }
+        )
+  
       response = @client.get(endpoint)
-      assert_equal JSON.parse(response_body), response
+  
+      assert_equal response_body, response
     end
-
+  
     def test_get_failure
       endpoint = "works/invalid"
       response_body = "Not Found"
@@ -36,12 +40,6 @@ module Crossrefapi
 
       response = @client.get(endpoint)
       assert_equal "Error! Status: 404 #{response_body}", response
-    end
-
-    def test_build_uri
-      endpoint = "works/10.2305/IUCN.UK.2016-1.RLTS.T56003281A22157381.en"
-      uri = @client.send(:build_uri, endpoint)
-      assert_equal URI.parse("https://api.crossref.org/#{endpoint}"), uri
     end
   end
 end

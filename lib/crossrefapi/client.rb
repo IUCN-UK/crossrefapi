@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'faraday'
+
 module Crossrefapi
   # Crossrefapi::Client
   #
@@ -22,6 +24,7 @@ module Crossrefapi
     attr_reader :funders, :works, :prefixes, :licenses
 
     def initialize
+      @connection = initialize_connection
       @funders = Crossrefapi::Funders.new(self)
       @works = Crossrefapi::Works.new(self)
       @prefixes = Crossrefapi::Prefixes.new(self)
@@ -29,24 +32,21 @@ module Crossrefapi
     end
 
     def get(endpoint, query = {})
-      uri = build_uri(endpoint, query)
+      response = @connection.get(endpoint, query)
 
-      response = Net::HTTP.get_response(uri)
-
-      if response.is_a?(Net::HTTPSuccess)
-        JSON.parse(response.body)
+      if response.success?
+        response.body
       else
-        "Error! Status: #{response.code} #{response.body}"
+        "Error! Status: #{response.status} #{response.body}"
       end
     end
 
     private
 
-    def build_uri(endpoint, query = {})
-      url = "#{API_BASE}#{endpoint}"
-      uri = URI.parse(url)
-      uri.query = URI.encode_www_form(query) unless query.empty?
-      uri
+    def initialize_connection
+      Faraday.new(url: API_BASE) do |connection|
+        connection.response :json
+      end
     end
   end
 end

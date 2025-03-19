@@ -17,7 +17,7 @@ module Crossrefapi
       response_body = { "status" => "ok" }
 
       stub_request(:get, "https://api.crossref.org/#{endpoint}")
-        .to_return(status: 200, body: response_body.to_json, headers: { 'Content-Type' => 'application/json' })
+        .to_return(status: 200, body: response_body.to_json, headers: { "Content-Type" => "application/json" })
 
       response = @client.licenses.all({ "query" => "red+list" })
       assert_equal response_body, response

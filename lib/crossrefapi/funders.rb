@@ -26,8 +26,8 @@ module Crossrefapi
       @client.get("funders/#{id}")
     end
 
-    def by_id_works(id)
-      @client.get("funders/#{id}/works")
+    def by_id_works(id, query = {})
+      @client.get("funders/#{id}/works", query)
     end
   end
 end

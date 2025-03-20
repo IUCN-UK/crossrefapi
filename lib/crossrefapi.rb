@@ -9,6 +9,7 @@ require_relative "crossrefapi/journals"
 require_relative "crossrefapi/licenses"
 require_relative "crossrefapi/members"
 require_relative "crossrefapi/prefixes"
+require_relative "crossrefapi/types"
 require_relative "crossrefapi/version"
 require_relative "crossrefapi/works"
 

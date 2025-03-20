@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "net/http"
+require "faraday"
 require "json"
 
 require_relative "crossrefapi/client"

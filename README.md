@@ -2,7 +2,7 @@
 
 This is a Ruby Gem for working with the Crossref API.
 
-This library was originally developed to meet particular requirements at (The International Union for Conservation of Nature)[https://iucn.org/](IUCN) to map the CrossRef API as closely as possible.  Before using this Gem, however, we would encourage you to also check out the excellent (Serrano)[https://github.com/sckott/serrano] Gem, which provides additional functionalities, as it might suit your use case better.
+This library was originally developed to meet particular requirements at [The International Union for Conservation of Nature (IUCN)](https://iucn.org/) to map the CrossRef API as closely as possible.  Before using this Gem, however, we would encourage you to also check out the excellent [Serrano](https://github.com/sckott/serrano) Gem, which provides additional functionalities, as it might suit your use case better.
 
 ## Installation
 

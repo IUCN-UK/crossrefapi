@@ -1,10 +1,8 @@
 # Crossrefapi
 
-This is a Ruby Gem for working with the Crossref API. 
+This is a Ruby Gem for working with the Crossref API.
 
-It is inspired by the excellent CrossRefAPI Python & Go package listed in the Crossref API docs. 
-
-This Gem is meant to follow the "polite" guidelines for interacting with the public API at api.crossref.org.
+This library was originally developed to meet particular requirements at (The International Union for Conservation of Nature (IUCN))[https://iucn.org/] to map the CrossRef API as closely as possible.  Before using this Gem, however, we would encourage you to also check out the excellent (Serrano)[https://github.com/sckott/serrano] Gem, which provides additional functionalities, as it might suit your use case better.
 
 ## Installation
 

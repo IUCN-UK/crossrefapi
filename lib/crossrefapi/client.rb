@@ -21,14 +21,15 @@ module Crossrefapi
   class Client
     API_BASE = "https://api.crossref.org/"
 
-    attr_reader :funders, :works, :prefixes, :licenses
+    attr_reader :funders, :licenses, :prefixes, :works, :journals
 
     def initialize
       @connection = initialize_connection
       @funders = Crossrefapi::Funders.new(self)
-      @works = Crossrefapi::Works.new(self)
-      @prefixes = Crossrefapi::Prefixes.new(self)
+      @journals = Crossrefapi::Journals.new(self)
       @licenses = Crossrefapi::Licenses.new(self)
+      @prefixes = Crossrefapi::Prefixes.new(self)
+      @works = Crossrefapi::Works.new(self)
     end
 
     def get(endpoint, query = {})

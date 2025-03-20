@@ -26,8 +26,8 @@ module Crossrefapi
       @client.get("journals/#{issn}")
     end
 
-    def by_issn_works(issn)
-      @client.get("journals/#{issn}/works")
+    def by_issn_works(issn, query = {})
+      @client.get("journals/#{issn}/works", query)
     end
   end
 end

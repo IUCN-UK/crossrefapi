@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name = "crossrefapi"
   spec.version = Crossrefapi::VERSION
   spec.authors = ["Ian Townsend"]
-  spec.email = ["redlist@iucn.org"]
+  spec.email = ["conservation.informatics@iucn.org"]
 
   spec.summary       = "A Ruby Gem that wraps the CrossRef API for fetching metadata and DOI-related information."
   spec.description   = "This gem provides a simple interface to interact with the CrossRef API. It allows users to search for works, retrieve metadata by DOI, and access citation information, helping to integrate scholarly data into Ruby applications."

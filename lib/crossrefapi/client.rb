@@ -19,17 +19,16 @@ module Crossrefapi
   class Client
     API_BASE = "https://api.crossref.org/"
 
-    attr_reader :funders, :journals, :licenses, :members, :prefixes, :types, :works
+    RESOURCES = %w[funders journals licenses members prefixes types works].freeze
 
     def initialize
       @connection = initialize_connection
-      @funders = Crossrefapi::Funders.new(self)
-      @journals = Crossrefapi::Journals.new(self)
-      @licenses = Crossrefapi::Licenses.new(self)
-      @members = Crossrefapi::Members.new(self)
-      @prefixes = Crossrefapi::Prefixes.new(self)
-      @types = Crossrefapi::Types.new(self)
-      @works = Crossrefapi::Works.new(self)
+    end
+
+    RESOURCES.each do |resource|
+      define_method(resource) do
+        setup_resource(resource)
+      end
     end
 
     def get(endpoint, query = {})
@@ -43,6 +42,13 @@ module Crossrefapi
     end
 
     private
+
+    def setup_resource(resource)
+      instance_variable_get("@#{resource}") ||
+        instance_variable_set(
+          "@#{resource}", Object.const_get("Crossrefapi::#{resource.capitalize}").new(self)
+        )
+    end
 
     def initialize_connection
       Faraday.new(url: API_BASE) do |connection|
